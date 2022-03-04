@@ -6,18 +6,18 @@
 void LibraryService::AddNewBook()
 {
     std::string title;
-    LibraryPresenter::Write("\nPlease enter the title of your book :\n");
+    LibraryPresenter::WriteInBlue("\nPlease enter the title of your book :\n");
     LibraryPresenter::GetLine(title);
 
     Book book(title);
     _libraryRepository->AddBook(book);
 
-    LibraryPresenter::Write(book.GetTitle() + " is added to your library.");
+    LibraryPresenter::WriteInGreen(book.GetTitle() + " is added to your library.");
 }
 
 void LibraryService::ListAllBooks()
 {
-    LibraryPresenter::Write("\nListing all books\n");
+    LibraryPresenter::WriteInBlue("\nListing all books\n");
     std::vector<Book> books = _libraryRepository->GetAllBooks();
 
     if (books.size() > 0)
@@ -26,21 +26,30 @@ void LibraryService::ListAllBooks()
     }
     else
     {
-        LibraryPresenter::Write("\nNo book stored");
+        LibraryPresenter::WriteInGreen("\nNo book stored");
     }
 }
 
 void LibraryService::DeleteBook()
 {
-    LibraryPresenter::Write("\nDeleting a book\n");
+    LibraryPresenter::WriteInBlue("\nDeleting a book\n");
+    std::vector<Book> books = _libraryRepository->GetAllBooks();
 
-    _libraryRepository->DeleteBook();
+    if (books.size() > 0)
+    {
+        _libraryRepository->DeleteBook();
+    }
+    else
+    {
+        LibraryPresenter::WriteInGreen("\nNo book stored");
+    }
 }
 
 void LibraryService::ParseBooksAndDisplay(std::vector<Book> books)
 {
     for (auto book = books.begin(); book != books.end(); ++book)
     {
-        LibraryPresenter::Write("\n" + book->GetTitle());
+        LibraryPresenter::Write("\n");
+        LibraryPresenter::WriteInGreen(book->GetTitle());
     }
 }

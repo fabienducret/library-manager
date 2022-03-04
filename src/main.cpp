@@ -42,7 +42,7 @@ int main()
     LibraryRepository libraryRepository;
     LibraryService libraryService(&libraryRepository);
 
-    LibraryPresenter::Write("Welcome to your library !");
+    LibraryPresenter::WriteInBlue("Welcome to your library !");
     int action;
 
     while (action != 9)
