@@ -1,6 +1,4 @@
 #include "../interfaces/ILibraryRepository.hpp"
-#include "../presenters/LibraryPresenter.hpp"
-#include "../entities/Book.hpp"
 
 class LibraryService
 {
