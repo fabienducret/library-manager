@@ -8,6 +8,7 @@ public:
     }
     void AddNewBook();
     void ListAllBooks();
+    void DeleteBook();
 
 private:
     void ParseBooksAndDisplay(std::vector<Book> books);

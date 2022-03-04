@@ -30,6 +30,13 @@ void LibraryService::ListAllBooks()
     }
 }
 
+void LibraryService::DeleteBook()
+{
+    LibraryPresenter::Write("\nDeleting a book\n");
+
+    _libraryRepository->DeleteBook();
+}
+
 void LibraryService::ParseBooksAndDisplay(std::vector<Book> books)
 {
     for (auto book = books.begin(); book != books.end(); ++book)

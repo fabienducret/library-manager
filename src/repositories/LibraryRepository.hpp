@@ -8,6 +8,7 @@ class LibraryRepository : public ILibraryRepository
 public:
     void AddBook(Book book);
     std::vector<Book> GetAllBooks();
+    void DeleteBook();
 
 private:
     std::vector<Book> _books;

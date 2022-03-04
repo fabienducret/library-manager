@@ -8,6 +8,7 @@ void askAction(int &action)
     LibraryPresenter::Write(
         "\n\n1 for adding\n"
         "2 for listing\n"
+        "3 for deleting\n"
         "9 for leaving\n"
         "Please enter your action: ");
 
@@ -23,6 +24,9 @@ void executeAction(int &action, LibraryService &libraryService)
         break;
     case 2:
         libraryService.ListAllBooks();
+        break;
+    case 3:
+        libraryService.DeleteBook();
         break;
     case 9:
         LibraryPresenter::Write("\nBye :)");
@@ -44,12 +48,6 @@ int main()
     while (action != 9)
     {
         askAction(action);
-
-        if (!action)
-        {
-            break;
-        }
-
         executeAction(action, libraryService);
     }
 
