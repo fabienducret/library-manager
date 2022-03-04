@@ -3,19 +3,19 @@
 #include "presenters/LibraryPresenter.hpp"
 #include "repositories/LibraryRepository.hpp"
 
-void askAction(int &action)
+void askAction(int &action, LibraryPresenter &libraryPresenter)
 {
-    LibraryPresenter::Write(
+    libraryPresenter.Write(
         "\n\n1 for adding\n"
         "2 for listing\n"
         "3 for deleting\n"
         "9 for leaving\n"
         "Please enter your action: ");
 
-    LibraryPresenter::AskForParam(action);
+    libraryPresenter.AskForParam(action);
 }
 
-void executeAction(int &action, LibraryService &libraryService)
+void executeAction(int &action, LibraryService &libraryService, LibraryPresenter &libraryPresenter)
 {
     switch (action)
     {
@@ -29,10 +29,10 @@ void executeAction(int &action, LibraryService &libraryService)
         libraryService.DeleteBook();
         break;
     case 9:
-        LibraryPresenter::Write("\nBye :)");
+        libraryPresenter.Write("\nBye :)");
         break;
     default:
-        LibraryPresenter::Write("\nInvalid action\n");
+        libraryPresenter.Write("\nInvalid action\n");
         break;
     }
 }
@@ -40,15 +40,16 @@ void executeAction(int &action, LibraryService &libraryService)
 int main()
 {
     LibraryRepository libraryRepository;
-    LibraryService libraryService(&libraryRepository);
+    LibraryPresenter libraryPresenter;
+    LibraryService libraryService(&libraryRepository, &libraryPresenter);
 
-    LibraryPresenter::WriteInBlue("Welcome to your library !");
+    libraryPresenter.WriteInBlue("Welcome to your library !");
     int action;
 
     while (action != 9)
     {
-        askAction(action);
-        executeAction(action, libraryService);
+        askAction(action, libraryPresenter);
+        executeAction(action, libraryService, libraryPresenter);
     }
 
     std::cout << std::endl;

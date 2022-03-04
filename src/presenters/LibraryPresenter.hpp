@@ -1,11 +1,12 @@
 #pragma once
+#include "../interfaces/ILibraryPresenter.hpp"
 
-class LibraryPresenter
+class LibraryPresenter : public ILibraryPresenter
 {
 public:
-    static void Write(std::string message);
-    static void WriteInGreen(std::string message);
-    static void WriteInBlue(std::string message);
-    static void AskForParam(int &param);
-    static void GetLine(std::string &param);
+    void Write(std::string message);
+    void WriteInGreen(std::string message);
+    void WriteInBlue(std::string message);
+    void AskForParam(int &param);
+    void GetLine(std::string &param);
 };

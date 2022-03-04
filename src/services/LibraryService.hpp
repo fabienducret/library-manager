@@ -1,10 +1,15 @@
 #include "../interfaces/ILibraryRepository.hpp"
+#include "../interfaces/ILibraryPresenter.hpp"
 
 class LibraryService
 {
 public:
-    LibraryService(ILibraryRepository *libraryRepository) : _libraryRepository(libraryRepository)
+    LibraryService(
+        ILibraryRepository *libraryRepository,
+        ILibraryPresenter *libraryPresenter)
     {
+        _libraryRepository = libraryRepository;
+        _libraryPresenter = libraryPresenter;
     }
     void AddNewBook();
     void ListAllBooks();
@@ -13,4 +18,5 @@ public:
 private:
     void ParseBooksAndDisplay(std::vector<Book> books);
     ILibraryRepository *_libraryRepository;
+    ILibraryPresenter *_libraryPresenter;
 };
