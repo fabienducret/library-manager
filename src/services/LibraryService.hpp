@@ -10,5 +10,6 @@ public:
     void ListAllBooks();
 
 private:
+    void ParseBooksAndDisplay(std::vector<Book> books);
     ILibraryRepository *_libraryRepository;
 };

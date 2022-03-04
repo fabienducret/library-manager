@@ -22,13 +22,18 @@ void LibraryService::ListAllBooks()
 
     if (books.size() > 0)
     {
-        for (auto book = books.begin(); book != books.end(); ++book)
-        {
-            LibraryPresenter::Write("\n" + book->GetTitle());
-        }
+        ParseBooksAndDisplay(books);
     }
     else
     {
         LibraryPresenter::Write("\nNo book stored");
+    }
+}
+
+void LibraryService::ParseBooksAndDisplay(std::vector<Book> books)
+{
+    for (auto book = books.begin(); book != books.end(); ++book)
+    {
+        LibraryPresenter::Write("\n" + book->GetTitle());
     }
 }
