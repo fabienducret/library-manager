@@ -20,8 +20,15 @@ void LibraryService::ListAllBooks()
     LibraryPresenter::Write("\nListing all books\n");
     std::vector<Book> books = _libraryRepository->GetAllBooks();
 
-    for (auto book = books.begin(); book != books.end(); ++book)
+    if (books.size() > 0)
     {
-        LibraryPresenter::Write(book->GetTitle() + "\n");
+        for (auto book = books.begin(); book != books.end(); ++book)
+        {
+            LibraryPresenter::Write("\n" + book->GetTitle());
+        }
+    }
+    else
+    {
+        LibraryPresenter::Write("\nNo book stored");
     }
 }

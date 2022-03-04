@@ -1,4 +1,4 @@
-CXX = clang++
+CXX = clang++ -std=c++17
 
 all: clean main	LibraryService LibraryPresenter LibraryRepository Book
 	$(CXX) -o bin/library bin/main.o bin/LibraryService.o bin/LibraryPresenter.o bin/LibraryRepository.o bin/Book.o
