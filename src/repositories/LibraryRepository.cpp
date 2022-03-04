@@ -12,6 +12,6 @@ std::vector<Book> LibraryRepository::GetAllBooks()
 
 void LibraryRepository::DeleteBook()
 {
-    std::vector<Book>::const_iterator bookToDelete = _books.begin();
+    std::vector<Book>::iterator bookToDelete = _books.begin();
     _books.erase(bookToDelete);
 }
