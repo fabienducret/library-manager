@@ -8,12 +8,12 @@ void LibraryPresenter::Write(std::string message)
 
 void LibraryPresenter::WriteInGreen(std::string message)
 {
-    std::cout << "\033[1;32m" + message + "\033[0m";
+    LibraryPresenter::Write("\033[1;32m" + message + "\033[0m");
 }
 
 void LibraryPresenter::WriteInBlue(std::string message)
 {
-    std::cout << "\033[1;34m" + message + "\033[0m";
+    LibraryPresenter::Write("\033[1;34m" + message + "\033[0m");
 }
 
 void LibraryPresenter::AskForParam(int &param)
