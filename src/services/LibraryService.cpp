@@ -3,25 +3,25 @@
 #include "../presenters/LibraryPresenter.hpp"
 #include "../entities/Book.hpp"
 
-void LibraryService::addNewBook()
+void LibraryService::AddNewBook()
 {
     std::string title;
-    LibraryPresenter::write("\nPlease enter the title of your book :\n");
-    LibraryPresenter::getLine(title);
+    LibraryPresenter::Write("\nPlease enter the title of your book :\n");
+    LibraryPresenter::GetLine(title);
 
     Book book(title);
-    _libraryRepository->addBook(book);
+    _libraryRepository->AddBook(book);
 
-    LibraryPresenter::write(book.GetTitle() + " is added to your library.");
+    LibraryPresenter::Write(book.GetTitle() + " is added to your library.");
 }
 
-void LibraryService::listAllBooks()
+void LibraryService::ListAllBooks()
 {
-    LibraryPresenter::write("\nListing all books\n");
-    std::vector<Book> books = _libraryRepository->getAllBooks();
+    LibraryPresenter::Write("\nListing all books\n");
+    std::vector<Book> books = _libraryRepository->GetAllBooks();
 
     for (auto book = books.begin(); book != books.end(); ++book)
     {
-        LibraryPresenter::write(book->GetTitle() + "\n");
+        LibraryPresenter::Write(book->GetTitle() + "\n");
     }
 }

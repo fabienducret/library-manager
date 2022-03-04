@@ -8,8 +8,8 @@ public:
     LibraryService(ILibraryRepository *libraryRepository) : _libraryRepository(libraryRepository)
     {
     }
-    void addNewBook();
-    void listAllBooks();
+    void AddNewBook();
+    void ListAllBooks();
 
 private:
     ILibraryRepository *_libraryRepository;

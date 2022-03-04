@@ -5,13 +5,13 @@
 
 void askAction(int &action)
 {
-    LibraryPresenter::write(
+    LibraryPresenter::Write(
         "\n\n1 for adding\n"
         "2 for listing\n"
         "9 for leaving\n"
         "Please enter your action: ");
 
-    LibraryPresenter::askForParam(action);
+    LibraryPresenter::AskForParam(action);
 }
 
 void executeAction(int &action, LibraryService &libraryService)
@@ -19,16 +19,16 @@ void executeAction(int &action, LibraryService &libraryService)
     switch (action)
     {
     case 1:
-        libraryService.addNewBook();
+        libraryService.AddNewBook();
         break;
     case 2:
-        libraryService.listAllBooks();
+        libraryService.ListAllBooks();
         break;
     case 9:
-        LibraryPresenter::write("\nBye :)");
+        LibraryPresenter::Write("\nBye :)");
         break;
     default:
-        LibraryPresenter::write("\nInvalid action\n");
+        LibraryPresenter::Write("\nInvalid action\n");
         break;
     }
 }
@@ -38,7 +38,7 @@ int main()
     LibraryRepository libraryRepository;
     LibraryService libraryService(&libraryRepository);
 
-    LibraryPresenter::write("Welcome to your library !");
+    LibraryPresenter::Write("Welcome to your library !");
     int action;
 
     while (action != 9)

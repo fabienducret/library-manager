@@ -5,8 +5,8 @@
 class ILibraryRepository
 {
 public:
-    virtual void addBook(Book book) = 0;
-    virtual std::vector<Book> getAllBooks() = 0;
+    virtual void AddBook(Book book) = 0;
+    virtual std::vector<Book> GetAllBooks() = 0;
 
 private:
     std::vector<Book> _books;

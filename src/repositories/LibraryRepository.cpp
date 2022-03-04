@@ -1,12 +1,12 @@
 #include "LibraryRepository.hpp"
 #include "../entities/Book.hpp"
 
-void LibraryRepository::addBook(Book book)
+void LibraryRepository::AddBook(Book book)
 {
     _books.push_back(book);
 }
 
-std::vector<Book> LibraryRepository::getAllBooks()
+std::vector<Book> LibraryRepository::GetAllBooks()
 {
     return _books;
 }

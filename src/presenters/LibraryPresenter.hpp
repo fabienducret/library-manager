@@ -3,7 +3,7 @@
 class LibraryPresenter
 {
 public:
-    static void write(std::string message);
-    static void askForParam(int &param);
-    static void getLine(std::string &param);
+    static void Write(std::string message);
+    static void AskForParam(int &param);
+    static void GetLine(std::string &param);
 };
