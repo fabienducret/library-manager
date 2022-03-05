@@ -11,7 +11,7 @@ void LibraryService::AddNewBook()
     Book book(title);
     _libraryRepository->AddBook(book);
 
-    _libraryPresenter->WriteInGreen(book.GetTitle() + " is added to your library.");
+    _libraryPresenter->WriteInGreen("\n" + book.GetTitle() + " is added to your library.");
 }
 
 void LibraryService::ListAllBooks()
@@ -36,7 +36,12 @@ void LibraryService::DeleteBook()
 
     if (books.size() > 0)
     {
-        _libraryRepository->DeleteBook();
+        int bookToDelete;
+        ParseBooksAndDisplay(books);
+        _libraryPresenter->Write("\n\nWhich book do you want to delete ?\n");
+        _libraryPresenter->AskForParam(bookToDelete);
+        _libraryPresenter->Write("Book delete : " + std::to_string(bookToDelete));
+        // _libraryRepository->DeleteBook();
     }
     else
     {
@@ -46,9 +51,12 @@ void LibraryService::DeleteBook()
 
 void LibraryService::ParseBooksAndDisplay(std::vector<Book> books)
 {
+    int bookIndex = 1;
     for (auto book = books.begin(); book != books.end(); ++book)
     {
+        std::string bookIndexToDisplay = std::to_string(bookIndex);
         _libraryPresenter->Write("\n");
-        _libraryPresenter->WriteInGreen(book->GetTitle());
+        _libraryPresenter->WriteInGreen(bookIndexToDisplay + ". " + book->GetTitle());
+        bookIndex++;
     }
 }
