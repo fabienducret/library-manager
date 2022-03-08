@@ -40,8 +40,8 @@ void LibraryService::DeleteBook()
         ParseBooksAndDisplay(books);
         _libraryPresenter->Write("\n\nWhich book do you want to delete ?\n");
         _libraryPresenter->AskForParam(bookToDelete);
-        _libraryPresenter->Write("Book delete : " + std::to_string(bookToDelete));
-        // _libraryRepository->DeleteBook();
+        _libraryRepository->DeleteBook(bookToDelete);
+        _libraryPresenter->WriteInGreen("\nBook deleted");
     }
     else
     {
@@ -54,9 +54,8 @@ void LibraryService::ParseBooksAndDisplay(std::vector<Book> books)
     int bookIndex = 1;
     for (auto book = books.begin(); book != books.end(); ++book)
     {
-        std::string bookIndexToDisplay = std::to_string(bookIndex);
         _libraryPresenter->Write("\n");
-        _libraryPresenter->WriteInGreen(bookIndexToDisplay + ". " + book->GetTitle());
+        _libraryPresenter->WriteInGreen(std::to_string(bookIndex) + ". " + book->GetTitle());
         bookIndex++;
     }
 }

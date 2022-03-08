@@ -10,8 +10,14 @@ std::vector<Book> LibraryRepository::GetAllBooks()
     return _books;
 }
 
-void LibraryRepository::DeleteBook()
+void LibraryRepository::DeleteBook(int bookToDelete)
 {
-    std::vector<Book>::iterator bookToDelete = _books.begin();
-    _books.erase(bookToDelete);
+    try
+    {
+        std::vector<Book>::iterator book = _books.begin() + bookToDelete - 1;
+        _books.erase(_books.begin() + bookToDelete - 1);
+    }
+    catch ()
+    {
+    }
 }
